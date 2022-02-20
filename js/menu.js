@@ -131,4 +131,55 @@ window.addEventListener("resize", function() {
 
 })
 
+var placeholder=document.querySelector(".wrapper_calendar input");
+var placeholder2=document.querySelector(".wrapper_time input");
 
+
+    document.querySelector(".wrapper_calendar input").addEventListener('focus', function (el) {
+    document.querySelector(".wrapper_calendar input").type="date";
+    document.querySelector(".calendar").style.display="none";
+    document.querySelector(".wrapper_calendar .arrow_appointment").style.display="none";
+    console.log(placeholder.getAttribute("placeholder"));
+
+});
+
+document.querySelector(".wrapper_calendar input").addEventListener('blur', function (el) {
+    document.querySelector(".wrapper_calendar input").type="text";
+    document.querySelector(".wrapper_calendar  .arrow_appointment").style.display="";
+
+
+    if ( placeholder.getAttribute("placeholder").replace(/\s/g, '')==="Wybierzdzień"){
+        document.querySelector(".calendar").style.display="";
+    } else {
+        document.querySelector(".calendar").style.display="none";
+    }
+
+    if (placeholder.value!==""){
+        document.querySelector(".calendar").style.display="none";
+    }
+
+});
+
+document.querySelector(".wrapper_time input").addEventListener('focus', function (el) {
+    document.querySelector(".wrapper_time input").type="time";
+    document.querySelector(".time").style.display="none";
+    document.querySelector(".wrapper_time .arrow_appointment").style.display="none";
+});
+
+document.querySelector(".wrapper_time input").addEventListener('blur', function (el) {
+    document.querySelector(".wrapper_time input").type="text";
+    document.querySelector(".time").style.display="";
+    document.querySelector(".wrapper_time .arrow_appointment").style.display="";
+
+
+    if ( placeholder2.getAttribute("placeholder").replace(/\s/g, '')==="Wybierzczas"){
+        document.querySelector(".time").style.display="";
+    } else {
+        document.querySelector(".time").style.display="none";
+    }
+
+    if (placeholder2.value!==""){
+        document.querySelector(".time").style.display="none";
+    }
+
+});
